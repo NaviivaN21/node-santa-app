@@ -4,19 +4,23 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial scale=1.0">
         <title>NodeJS santa-app</title>
-        <link rel="stylesheet" href="/css/style.css">
+        <link rel="stylesheet" href="/css/styles.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     </head>
     <body>
-      <h1> Hello Santa</h1>
-      
-      <form method="post">
-        What do you want for christmas?
-        <br>
-        <input name="username" placeholder="charlie.brown" />
-        <br>
-        <textarea name="wish" rows="10" cols="45" maxlength="100" placeholder="Gifts!"></textarea>
-        <br/>
-        <button type="submit" id="submit-letter">Send</button>
-      </form>
+      <div id="form">
+        <h1> Hello Santa</h1>
+        <form method="post">
+          What do you want for christmas?
+          <div class="form-group">
+            <input name="username" placeholder="charlie.brown" />
+          </div>
+          <br>
+          <div class="form-group">
+            <textarea name="wish" rows="10" cols="45" maxlength="100" placeholder="Gifts!"></textarea>
+          </div>
+          <button type="submit" id="submit-letter" class="btn btn-primary">Send</button>
+        </form>
+      </div>
     </body>
 </html>

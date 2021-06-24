@@ -1,12 +1,8 @@
 const express = require('express');
-const mailTimer = require('./services/mailer/mailTimer.js');
+const mailTimer = require('./src/services/mailer/mailTimer.js');
 
 const app = express();
 const port = process.env.PORT || 3000;
-
-require('dotenv').config()
-
-console.log(process.env.SECRET_KEY)
 
 app.use(express.json());
 app.use(express.urlencoded({

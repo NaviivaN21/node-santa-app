@@ -1,5 +1,5 @@
 const nodemailer = require('nodemailer');
-const pendingWishes = require('../../sharedData.js');
+const { pendingWishes } = require('../../../sharedData.js');
 
 require('dotenv').config();
 

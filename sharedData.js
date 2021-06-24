@@ -1,3 +1,5 @@
 const pendingWishes =  [];
 
-module.exports = pendingWishes;
+module.exports = {
+    pendingWishes
+};

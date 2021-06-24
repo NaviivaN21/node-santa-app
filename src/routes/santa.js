@@ -1,36 +1,22 @@
 const express = require('express');
-const moment = require('moment');
-const axios = require('axios');
-const pendingWishes = require('../../sharedData.js');
-
+const { pendingWishes } = require('../../sharedData.js');
 const santaRouter = express.Router();
-const ERROR = {
-    childNotRegistered: 'You are not registered! Please do good things next time',
-    childAgeMoreThanTen: 'You are not a child anymore!',
-    invalidBirthDate: 'Invalid Birthdate',
-    internalError: 'Internal Error'
-}
-const URL_USERPROFILES = 'https://raw.githubusercontent.com/alj-devops/santa-data/master/userProfiles.json';
-const URL_USERS = 'https://raw.githubusercontent.com/alj-devops/santa-data/master/users.json';
+const { ERROR } = require('../constants.js');
 
-// DEFINE HELPERS
-const search = (arr, searchParam, field) => arr.find(e => e[field] === searchParam)
-const searchUser = (arr, userid) => search(arr, userid, 'username');
-const searchUserProfile = (arr, userid) => search(arr, userid, 'userUid');
-
-const isStringAllSpaces = str => !str.trim().length;
-const isUserIdAllSpaces = str => isStringAllSpaces(str);
-
-const renderScreen = (res, screen, error) => res.render(screen, {error});
-const renderErrorScreen = (res, error) => renderScreen(res, 'error', error);
-const renderConfirmScreen = (res) => renderScreen(res, 'confirm');
-
-const getRegisteredUsersFromURL = async () => await axios.get(URL_USERS);
-const getUserProfilesFromURL = async () => await axios.get(URL_USERPROFILES);
-
-const isDateFormatValid = date => moment(date, 'YYYY/MM/DD',true).isValid();
-
-const getAge = birthday => new Date(new Date() - new Date(birthday)).getFullYear() - 1970;
+const {
+    search,
+    searchUser,
+    searchUserProfile,
+    isStringAllSpaces,
+    isUserIdAllSpaces,
+    renderScreen,
+    renderErrorScreen,
+    renderConfirmScreen,
+    getRegisteredUsersFromURL,
+    getUserProfilesFromURL,
+    isDateFormatValid,
+    getAge,
+} = require('../santaHelper.js')
 
 // DEFINE ENDPOINTS
 santaRouter.get('', async(req, res) => {
